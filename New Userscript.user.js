@@ -13,7 +13,7 @@
     window.onload = function () {
         if (document.querySelector('[data-a-target="player-seekbar-duration"]')) {
             let MyElement = document.createElement("div");
-            MyElement.style = "font-size: 13px; display: flex; height: 100%; align-items: center; justify-content: flex-end;";
+            MyElement.style = "font-size: 13px; display: flex; height: 100%; align-items: center; justify-content: flex-end;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;";
             MyElement.innerHTML = `<div id="myTime" style="background-color: #00000079; padding: 5px; font-size: 17px; margin: 0px; border-radius: 5px;">00:00:00</div>`;
 
             document.querySelector('[data-a-target="player-overlay-click-handler"]').appendChild(MyElement);
