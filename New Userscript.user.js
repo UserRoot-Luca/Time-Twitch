@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Time Twitch
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  ###
 // @author       UserRoot-Luca
 // @match        https://www.twitch.tv/*
@@ -20,6 +20,7 @@
 
             let Duration = document.querySelector('[data-a-target="player-seekbar-duration"]').innerText;
             let TimeDuration = new Date("1970-01-01T" + Duration).getTime();
+            let TimeString = "";
             setInterval(function() {
                 let CurrentTime = new Date("1970-01-01T" + document.querySelector('[data-a-target="player-seekbar-current-time"]').innerText).getTime();
                 let dis = TimeDuration - CurrentTime;
@@ -36,8 +37,13 @@
                 if (hours   < 10 ) {hours   = "0" + hours   }
                 if (minutes < 10 ) {minutes = "0" + minutes }
                 if (seconds < 10 ) {seconds = "0" + seconds }
-  
-                document.getElementById("myTime").innerText = " -"+hours+":"+minutes+":"+seconds+" / "+ Duration+" ";
+
+                let currentTimeString = " -"+hours+":"+minutes+":"+seconds+" / "+ Duration+" ";
+                
+                if (TimeString != currentTimeString) {
+                    TimeString = currentTimeString
+                    document.getElementById("myTime").innerText = currentTimeString;
+                }
 
                 if (document.querySelector('[data-a-target="player-controls"]').getAttribute("data-a-visible") == "true"){
                     document.getElementById("myTime").style.display="flex";
