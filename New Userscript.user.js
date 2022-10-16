@@ -5,7 +5,7 @@
 // @description  ###
 // @author       UserRoot-Luca
 // @match        https://www.twitch.tv/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=twitch.tv
+// @icon         https://www.google.com/s2/favicons?domain=twitch.tv
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
