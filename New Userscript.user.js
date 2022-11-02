@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Time Twitch
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  ###
 // @author       UserRoot-Luca
 // @match        https://www.twitch.tv/*
@@ -12,7 +12,6 @@
 (function() {
     window.onload = function () {
         if (document.querySelector('[data-a-target="player-seekbar-duration"]')) {
-            const E_MYTIME = document.getElementById("myTime");
 
             let MyElement = document.createElement("div");
             MyElement.style = "font-size: 13px; display: flex; height: 100%; align-items: center; justify-content: flex-end;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;";
@@ -25,9 +24,10 @@
             let TimeString = "";
 
             setInterval(function() {
+                let e_mytime = document.getElementById("myTime");
                 let CurrentTime = new Date("1970-01-01T" + document.querySelector('[data-a-target="player-seekbar-current-time"]').innerText).getTime();
                 let dis = TimeDuration - CurrentTime;
-
+                
                 if (document.querySelector(".hEHNVv")) {
                     let multiplier = parseFloat(document.querySelector(".hEHNVv").innerHTML.slice(0, -1));
                     if (multiplier >= 1) { dis /= multiplier; }
@@ -45,13 +45,13 @@
                 
                 if (TimeString != currentTimeString) {
                     TimeString = currentTimeString;
-                    E_MYTIME.innerText = currentTimeString;
+                    e_mytime.innerText = currentTimeString;
                 }
 
                 if (document.querySelector('[data-a-target="player-controls"]').getAttribute("data-a-visible") == "true"){
-                    E_MYTIME.style.display="flex";
+                    e_mytime.style.display="flex";
                 } else {
-                    E_MYTIME.style.display="none";
+                    e_mytime.style.display="none";
                 }
             }, 300);
         }
