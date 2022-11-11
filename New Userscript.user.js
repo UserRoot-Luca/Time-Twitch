@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Time Twitch
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      2.2
 // @description  ###
 // @author       UserRoot-Luca
 // @match        https://www.twitch.tv/*
@@ -53,6 +53,7 @@
                 let Main_Time = TimeFormats(Main_Dis);
                 
                 if (document.querySelector(".ibgvRA") != null) {
+                    let Bar_E_TimeBar = document.querySelector("#TimeBar");
                     if (!Bar_E_TimeBar) {
                         let MyElementBar = document.createElement("p");
                         MyElementBar.id = "TimeBar";
@@ -60,7 +61,6 @@
                         MyElementBar.innerHTML = "( -00:00:00 )";
                         document.querySelector(".ibgvRA").appendChild(MyElementBar);      
                     }
-                    let Bar_E_TimeBar = document.querySelector("#TimeBar");
                     let Bar_TimeDuration = 0;
                     document.querySelector(".ibgvRA").childNodes.forEach((e) => {
                         if (e.className == "CoreText-sc-cpl358-0 Azerv") { Bar_TimeDuration = new Date("1970-01-01T" + e.innerHTML).getTime(); }
