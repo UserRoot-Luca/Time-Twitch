@@ -36,24 +36,8 @@
             }
 
             let E_Time:HTMLDivElement = document.createElement("div");
-            E_Time.setAttribute('style',  `
-                font-size: 13px; 
-                display: flex; 
-                height: 100%; 
-                align-items: center; 
-                justify-content: flex-end;
-                -webkit-touch-callout: none;
-                -webkit-user-select: none;
-                -khtml-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            `);
-            E_Time.innerHTML = `
-                <div id="myTime" style="background-color: #00000060; padding: 3px 2px; font-size: 16px; margin: 0px; border-radius: 5px;">
-                    00:00:00
-                </div>
-            `;
+            E_Time.setAttribute('style',  `font-size: 13px;display: flex;height: 100%;align-items: center;justify-content: flex-end;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;`);
+            E_Time.innerHTML = `<div id="myTime" style="background-color: #00000060; padding: 3px 2px; font-size: 16px; margin: 0px; border-radius: 5px;">00:00:00</div>`;
             document.querySelector('[data-a-target="player-overlay-click-handler"]')!.appendChild(E_Time);
             
             let Main_Duration = document.querySelector<HTMLElement>('[data-a-target="player-seekbar-duration"]')!.innerText;
@@ -72,9 +56,7 @@
                     if (!Bar_E_TimeBar) {
                         let E_TimeBar = document.createElement("p");
                         E_TimeBar.id = "TimeBar";
-                        E_TimeBar.setAttribute('style', `
-                            margin-left: 3px;
-                        `);
+                        E_TimeBar.setAttribute('style', `margin-left: 3px;`);
                         E_TimeBar.innerHTML = "( -00:00:00 )";
                         document.querySelector(".ibgvRA")!.appendChild(E_TimeBar);      
                     }

@@ -41,8 +41,8 @@
                 return Dis;
             };
             var E_Time = document.createElement("div");
-            E_Time.setAttribute('style', "\n                font-size: 13px; \n                display: flex; \n                height: 100%; \n                align-items: center; \n                justify-content: flex-end;\n                -webkit-touch-callout: none;\n                -webkit-user-select: none;\n                -khtml-user-select: none;\n                -moz-user-select: none;\n                -ms-user-select: none;\n                user-select: none;\n            ");
-            E_Time.innerHTML = "\n                <div id=\"myTime\" style=\"background-color: #00000060; padding: 3px 2px; font-size: 16px; margin: 0px; border-radius: 5px;\">\n                    00:00:00\n                </div>\n            ";
+            E_Time.setAttribute('style', "font-size: 13px;display: flex;height: 100%;align-items: center;justify-content: flex-end;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;");
+            E_Time.innerHTML = "<div id=\"myTime\" style=\"background-color: #00000060; padding: 3px 2px; font-size: 16px; margin: 0px; border-radius: 5px;\">00:00:00</div>";
             document.querySelector('[data-a-target="player-overlay-click-handler"]').appendChild(E_Time);
             var Main_Duration_1 = document.querySelector('[data-a-target="player-seekbar-duration"]').innerText;
             var Main_TimeDuration_1 = new Date("1970-01-01T" + Main_Duration_1).getTime();
@@ -58,7 +58,7 @@
                     if (!Bar_E_TimeBar) {
                         var E_TimeBar = document.createElement("p");
                         E_TimeBar.id = "TimeBar";
-                        E_TimeBar.setAttribute('style', "\n                            margin-left: 3px;\n                        ");
+                        E_TimeBar.setAttribute('style', "margin-left: 3px;");
                         E_TimeBar.innerHTML = "( -00:00:00 )";
                         document.querySelector(".ibgvRA").appendChild(E_TimeBar);
                     }
