@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Time Twitch
 // @namespace    http://tampermonkey.net/
-// @version      5.2
+// @version      5.3
 // @description  ###
 // @author       UserRoot-Luca
 // @match        https://www.twitch.tv/*
@@ -41,8 +41,9 @@
         }
         return Dis;
     }
-
+    let TimeOut = 0;
     const CheckElemete = setInterval(()=>{
+        if (TimeOut == 600) { clearInterval(CheckElemete) }
         let Duration = document.querySelector<HTMLParagraphElement>('[data-a-target="player-seekbar-duration"]');
         if(Duration != null){
             let TimeDuration = new Date("1970-01-01T" + (Duration!.textContent || Duration!.innerHTML)).getTime();
@@ -66,6 +67,7 @@
             });
             clearInterval(CheckElemete)
         }
+        TimeOut++;
     },300)
 
 })();
