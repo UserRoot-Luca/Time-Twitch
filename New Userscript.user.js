@@ -2,7 +2,7 @@
 // ==UserScript==
 // @name         Time Twitch
 // @namespace    http://tampermonkey.net/
-// @version      5.3
+// @version      5.4
 // @description  ###
 // @author       UserRoot-Luca
 // @match        https://www.twitch.tv/*
@@ -66,6 +66,9 @@
                     else {
                         E_MyTime.style.display = "none";
                     }
+                }
+                if ((TimeDuration - CurrentTime) < 0) {
+                    location.reload();
                 }
             });
             clearInterval(CheckElemete);

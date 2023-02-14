@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Time Twitch
 // @namespace    http://tampermonkey.net/
-// @version      5.3
+// @version      5.4
 // @description  ###
 // @author       UserRoot-Luca
 // @match        https://www.twitch.tv/*
@@ -16,7 +16,7 @@
         let h:number | string = Math.floor((inTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         let m:number | string = Math.floor((inTime % (1000 * 60 * 60)) / (1000 * 60));
         let s:number | string = Math.floor((inTime % (1000 * 60)) / 1000);
-
+        
         if (h < 10 ) { h = "0" + h; }
         if (m < 10 ) { m = "0" + m; }
         if (s < 10 ) { s = "0" + s; }
@@ -59,10 +59,13 @@
                 let Time = TimeFormats(DisMultiplier(TimeDuration - CurrentTime));
                 if (E_MyTime != null) {
                     E_MyTime.textContent = " ( -"+Time.hours+":"+Time.minutes+":"+Time.seconds+" / "+ (Duration!.textContent || Duration!.innerHTML)+" )";
-                
+
                     if (document.querySelector('[data-a-target="player-controls"]')!.getAttribute("data-a-visible") == "true"){
                         E_MyTime.style.display="flex";
                     } else { E_MyTime.style.display="none"; }
+                }
+                if ((TimeDuration - CurrentTime) < 0) {
+                    location.reload()
                 }
             });
             clearInterval(CheckElemete)
